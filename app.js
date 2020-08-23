@@ -1,4 +1,10 @@
-console.log("connected")
-var a = require('./stuff')
+var events = require("events");
 
-console.log(a.pi)
+var myemitter =  new events.EventEmitter();
+
+myemitter.on('somevent' , function(mssg){
+    console.log(mssg);
+})
+
+
+myemitter.emit('somevent', 'helllo');
