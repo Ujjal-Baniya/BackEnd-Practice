@@ -77,19 +77,19 @@ var fs = require("fs");
 
 //  //create server
 
-var http = require('http');
-var fs = require("fs");
+// var http = require('http');
+// var fs = require("fs");
 
 
 
-var server = http.createServer(function(req, res){
-    res.writeHead(200, {'content-type' : 'text/plain'});
-    var readstream = fs.createReadStream("file.txt", 'utf8');
-    readstream.pipe(res)
-})
+// var server = http.createServer(function(req, res){
+//     res.writeHead(200, {'content-type' : 'text/plain'});
+//     var readstream = fs.createReadStream("file.txt", 'utf8');
+//     readstream.pipe(res)
+// })
 
-server.listen(3000, '127.0.0.1');
-console.log("listening 101");
+// server.listen(3000, '127.0.0.1');
+// console.log("listening 101");
 
 // //  // readable streams
 
@@ -110,3 +110,16 @@ console.log("listening 101");
 
 // readstream.pipe(writeStream)
 
+//------------------Basic Routing-------------------------//
+
+
+var http = require("http");
+var fs = require('fs')
+var server = http.createServer(function(req, res){
+    if (req.url === '/home' || req.url === '/'){
+        res.writeHead(200, {"content-type": "text/html"});
+        fs.createReadStream(__dirname + '/index.html').pipe(res);
+    }
+})
+server.listen(3000, '127.0.0.1');
+console.log("server started");
