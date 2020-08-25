@@ -77,27 +77,36 @@ var fs = require("fs");
 
 //  //create server
 
-// var http = require('http');
-
-// var server = http.createServer(function(req, res){
-//     res.writeHead(200, {'content-type' : 'text/plain'});
-//     res.end("byee")
-// })
-
-// server.listen(3000, '127.0.0.1');
-// console.log("listening 101");
-
-//  // readable streams
-
-var http = require("http");
+var http = require('http');
 var fs = require("fs");
 
-var readstream = fs.createReadStream("file.txt", 'utf8');
-var writeStream = fs.createWriteStream("writeMe.txt");
 
-readstream.on('data', function(chunk) {
-    console.log('new chunk created :');
-    writeStream.write(chunk);
-    console.log(chunk);
+
+var server = http.createServer(function(req, res){
+    res.writeHead(200, {'content-type' : 'text/plain'});
+    var readstream = fs.createReadStream("file.txt", 'utf8');
+    readstream.pipe(res)
 })
+
+server.listen(3000, '127.0.0.1');
+console.log("listening 101");
+
+// //  // readable streams
+
+// var http = require("http");
+// var fs = require("fs");
+
+// var readstream = fs.createReadStream("file.txt", 'utf8');
+// var writeStream = fs.createWriteStream("writeMe.txt");
+
+// readstream.on('data', function(chunk) {
+//     console.log('new chunk created :');
+//     writeStream.write(chunk);
+//     console.log(chunk);
+// })
+
+// // using pipe
+
+
+// readstream.pipe(writeStream)
 
