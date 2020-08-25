@@ -47,7 +47,57 @@ var fs = require("fs");
 
 // Asynchronous
 
-fs.readFile("file.txt", "utf8", function(err, data){
-    // fs.writeFile("botCreated.txt", data);
-    console.log(data)
+// fs.readFile("file.txt", "utf8", function(err, data){
+//     // fs.writeFile("botCreated.txt", data);
+//     console.log(data)
+// })
+
+// fs.unlink("file.txt")
+
+
+// ----------------------------------------------------------------------------------------------
+
+
+//  ------------creating and removing directories----------------------------------------
+
+
+// fs.mkdir("stuff", function(){
+//     fs.readFile("file.txt", "utf8", function(err, data) {
+//         // fs.writeFile("writeMe.txt", data)
+//         console.log(data)
+//         })
+// })
+
+// // fs.rmdir("stuff")
+
+
+// -----------------------------------------------------------------
+// ===================================================================================================
+
+
+//  //create server
+
+// var http = require('http');
+
+// var server = http.createServer(function(req, res){
+//     res.writeHead(200, {'content-type' : 'text/plain'});
+//     res.end("byee")
+// })
+
+// server.listen(3000, '127.0.0.1');
+// console.log("listening 101");
+
+//  // readable streams
+
+var http = require("http");
+var fs = require("fs");
+
+var readstream = fs.createReadStream("file.txt", 'utf8');
+var writeStream = fs.createWriteStream("writeMe.txt");
+
+readstream.on('data', function(chunk) {
+    console.log('new chunk created :');
+    writeStream.write(chunk);
+    console.log(chunk);
 })
+
