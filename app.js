@@ -1,125 +1,17 @@
-//events emitter//
-// var events = require("events");
-// var util = require("util")
-
-// var myemitter =  new events.EventEmitter();
-
-// myemitter.on('somevent' , function(mssg){
-//     console.log(mssg);
-// })
+var express = require("express");
 
 
-// myemitter.emit('somevent', 'helllo');
+var app = express();
 
-// var person = function(name){
-//     this.name = name;
-// };
+app.listen(3000);                
 
-// util.inherits(person, events.EventEmitter);
-// var james = new person('james');
-// var ram = new person("ram");
-// var harry = new person("harry");
-
-// var people = [james, ram, harry];
-// people.forEach(function(person){
-//     person.on("speak", function(msg){
-//         console.log(person.name + " said "+ msg);
-//     })
-// })
-
-// james.emit("speak", 'hello man');
-// ram.emit("speak", "supp bruh");
-//<------------------------------------------------------------------>
-
-
-//reading and writing
-
-
-var fs = require("fs");
-
-
-
-// // synchronous
-
-// var read = fs.readFileSync("file.txt", 'utf8')
-// fs.writeFileSync("botCreated.txt", read);
-// console.log(read)
-
-// Asynchronous
-
-// fs.readFile("file.txt", "utf8", function(err, data){
-//     // fs.writeFile("botCreated.txt", data);
-//     console.log(data)
-// })
-
-// fs.unlink("file.txt")
-
-
-// ----------------------------------------------------------------------------------------------
-
-
-//  ------------creating and removing directories----------------------------------------
-
-
-// fs.mkdir("stuff", function(){
-//     fs.readFile("file.txt", "utf8", function(err, data) {
-//         // fs.writeFile("writeMe.txt", data)
-//         console.log(data)
-//         })
-// })
-
-// // fs.rmdir("stuff")
-
-
-// -----------------------------------------------------------------
-// ===================================================================================================
-
-
-//  //create server
-
-// var http = require('http');
-// var fs = require("fs");
-
-
-
-// var server = http.createServer(function(req, res){
-//     res.writeHead(200, {'content-type' : 'text/plain'});
-//     var readstream = fs.createReadStream("file.txt", 'utf8');
-//     readstream.pipe(res)
-// })
-
-// server.listen(3000, '127.0.0.1');
-// console.log("listening 101");
-
-// //  // readable streams
-
-// var http = require("http");
-// var fs = require("fs");
-
-// var readstream = fs.createReadStream("file.txt", 'utf8');
-// var writeStream = fs.createWriteStream("writeMe.txt");
-
-// readstream.on('data', function(chunk) {
-//     console.log('new chunk created :');
-//     writeStream.write(chunk);
-//     console.log(chunk);
-// })
-
-// // using pipe
-
-
-// readstream.pipe(writeStream)
-
-//------------------Basic Routing-------------------------//
-
-
-var http = require("http");
-var fs = require('fs')
-var server = http.createServer(function(req, res){
-    if (req.url === '/home' || req.url === '/'){
-        res.writeHead(200, {"content-type": "text/html"});
-        fs.createReadStream(__dirname + '/index.html').pipe(res);
-    }
+app.get('/', function(req, res){
+    res.send("Halo!!!")
 })
-server.listen(3000, '127.0.0.1');
-console.log("server started");
+
+app.get('/contact',function(req, res){
+    res.send("this is contact page")
+})
+// get = app.get(route, fn)
+// post = app.post(route, fn)
+//  delete = app.delete(route, fn)
