@@ -1,0 +1,27 @@
+
+body{
+    background-color: aqua;
+}
+h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: blue;
+}
+p{
+    text-align: center;
+    color: chartreuse;
+    font-size: 2em;
+}
+h2{
+    color: cadetblue;
+    font-size: 3em;
+    text-align:center;
+}
+li{
+    list-style: none;
+    text-align: center;
+    font-style: italic;
+    font-size: 2em;
+}
+#contact-form{
+    text-align: center;
+}
