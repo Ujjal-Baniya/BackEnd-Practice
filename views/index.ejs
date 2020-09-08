@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <%- include ('partials/nav.ejs') %>
+    <h1>
+        Hello Welcome everyone this is your <%= person %> Id
+    </h1>
+    <p>
+        <strong>Name:</strong> <%= data.name %>
+        <strong>Job:</strong> <%= data.Job %>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quo facere accusamus. Nobis veniam id nihil pariatur maiores! Eaque porro quia fugiat quod quas a necessitatibus iusto possimus quos excepturi.
+    </p>
+
+    <h2>
+        Hobbies
+    </h2>
+    <ul>
+        <% data.hobbies.forEach(function(item){ %>
+            <li> <%= item %> </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
